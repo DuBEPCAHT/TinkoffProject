@@ -37,11 +37,11 @@ P.S. Код для генерации текстовых файлов наход
 
 Код для создания таблицы руками:
 ***
-CREATE TABLE result (
+`CREATE TABLE result (
     id          bigint NOT NULL PRIMARY KEY,
     code        integer,
     number      varchar(50),
     filenames   varchar(100),
-    error       varchar(100),
-);
+    error       varchar(100)
+);`
 ***
