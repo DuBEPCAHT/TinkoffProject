@@ -3,9 +3,11 @@ package com.dyarvoy.TinkoffProject.controller;
 import com.dyarvoy.TinkoffProject.model.Result;
 import com.dyarvoy.TinkoffProject.repository.ResultRepository;
 import com.dyarvoy.TinkoffProject.service.FileService;
+import com.dyarvoy.TinkoffProject.service.ResultService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +31,7 @@ public class ResultController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private ResultRepository resultRepository;
+    private ResultService resultService;
 
     @Autowired
     private FileService fileService;
@@ -41,14 +43,14 @@ public class ResultController {
             if(result.getFileNames() != null){
                 result.setCode("00.Result.OK");
                 result.setNumber(Integer.parseInt(number));
-                resultRepository.save(result);
+                resultService.persist(result);
                 logger.info("\n----------------------------------\nЧисло " + number + " было найденно в файлах. " + new Date());
                 return new ResponseEntity(HttpStatus.OK);
             } else {
                 result.setCode("01.Result.NotFound");
                 result.setNumber(Integer.parseInt(number));
                 result.setError("Число не найдено ни в одном файле");
-                resultRepository.save(result);
+                resultService.persist(result);
                 logger.info("\n----------------------------------\nЧисло " + number + " не найденно в файлах. " + new Date());
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
             }
@@ -56,7 +58,7 @@ public class ResultController {
             Result result = new Result();
             result.setCode("02.Result.Error");
             result.setError("Указано не корректное значение для поиска");
-            resultRepository.save(result);
+            resultService.persist(result);
             logger.info("\n----------------------------------\n" + number + " не является корректным значением для поиска. " + new Date());
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }

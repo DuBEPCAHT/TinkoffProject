@@ -44,10 +44,10 @@ public class FileService {
                     amount--;
                 }
                 writer.close();
-                logger.info("\n----------------------------------\n20 файлов успешно созданно" + new Date());
+                logger.info("\n----------------------------------\n20 файлов успешно созданно " + new Date());
             } catch (IOException e) {
                 e.printStackTrace();
-                logger.info("\n----------------------------------\nВозникла ошибка при создании файлов" + new Date());
+                logger.info("\n----------------------------------\nВозникла ошибка при создании файлов " + new Date());
                 throw new FileCreateException("Error in moment create " + filesName[i] + ";");
             }
         }
@@ -72,7 +72,7 @@ public class FileService {
             if (charNumber[counter] == (char)chr){
                 counter++;
                 if(counter == charNumber.length){
-                    logger.info("\n----------------------------------\nЧисло"+ number + "найденно в файле" + fileName + ". " + new Date());
+                    logger.info("\n----------------------------------\nЧисло "+ number + " найденно в файле" + fileName + ". " + new Date());
                     return true;
                 }
             } else {
@@ -80,7 +80,7 @@ public class FileService {
             }
         }
         bin.close();
-        logger.info("\n----------------------------------\nЧисло"+ number + "не найденно в файле" + fileName + ". " + new Date());
+        logger.info("\n----------------------------------\nЧисло "+ number + " не найденно в файле" + fileName + ". " + new Date());
         return false;
     }
 

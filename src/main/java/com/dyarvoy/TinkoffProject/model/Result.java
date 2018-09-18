@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 /*
  * Result entity for PostgreDB
@@ -19,9 +20,9 @@ import javax.persistence.*;
 public class Result {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter @Setter
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Getter @Setter
