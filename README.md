@@ -10,9 +10,9 @@
 
 ***Решение***
 
-Стек: Java 8, Spring (Web, JPA, Security).
-База данных: PostgreSQL.
-Плагины: Project Lombok.
+Стек: Java 8, Spring (Web, JPA, Security)
+База данных: PostgreSQL
+Плагины: Project Lombok
 
 Комментарий: Я позволил себе реализовать эту задачу через REST сервис. Так как сичитаю что soap тут избыточен.
 
