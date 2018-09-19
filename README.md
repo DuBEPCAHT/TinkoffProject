@@ -39,8 +39,8 @@ P.S. Код для генерации текстовых файлов наход
 ***
 `CREATE TABLE result (
     id          bigint NOT NULL PRIMARY KEY,
-    code        integer,
-    number      varchar(50),
+    code        varchar(50),
+    number      integer,
     filenames   varchar(100),
     error       varchar(100)
 );`
